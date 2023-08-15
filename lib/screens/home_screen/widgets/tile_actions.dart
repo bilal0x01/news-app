@@ -24,6 +24,8 @@ class TileActions extends StatefulWidget {
 class _TileActionsState extends State<TileActions> {
   @override
   Widget build(BuildContext context) {
+    debugPrint(widget.currentArticle.publishedAt!);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [

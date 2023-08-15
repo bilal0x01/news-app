@@ -6,11 +6,31 @@ class ArticlesProvider with ChangeNotifier {
   List<Article>? _articles;
 
   List<Article>? get articles => _articles;
-  List<Article>? get bookmarkedArticles =>
-      _articles?.where((article) => article.isBookmark == true).toList();
+
+  List<Article>? get bookmarkedArticles {
+    List<Article> allBookmarkedArticles = [];
+    if (_articles != null) {
+      allBookmarkedArticles
+          .addAll(_articles!.where((article) => article.isBookmark == true));
+    }
+    if (_techArticles != null) {
+      allBookmarkedArticles.addAll(
+          _techArticles!.where((article) => article.isBookmark == true));
+    }
+    return allBookmarkedArticles;
+  }
 
   fetchArticles() async {
     _articles = await ArticlesDataProvider.fetchArticles();
+    notifyListeners();
+  }
+
+  List<Article>? _techArticles;
+
+  List<Article>? get techArticles => _techArticles;
+
+  fetchTechArticles() async {
+    _techArticles = await ArticlesDataProvider.fetchTechArticles();
     notifyListeners();
   }
 }

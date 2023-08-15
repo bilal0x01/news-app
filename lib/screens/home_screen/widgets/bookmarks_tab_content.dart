@@ -5,14 +5,14 @@ import 'package:news_app/screens/article_details_screen/article_details_screen.d
 import 'package:news_app/screens/home_screen/widgets/article_tile.dart';
 import 'package:provider/provider.dart';
 
-class FavoritesTabContent extends StatefulWidget {
-  const FavoritesTabContent({super.key});
+class BookmarksTabContent extends StatefulWidget {
+  const BookmarksTabContent({super.key});
 
   @override
-  State<FavoritesTabContent> createState() => _FavoritesTabContentState();
+  State<BookmarksTabContent> createState() => _BookmarksTabContentState();
 }
 
-class _FavoritesTabContentState extends State<FavoritesTabContent> {
+class _BookmarksTabContentState extends State<BookmarksTabContent> {
   List<Article>? _bookmarkedArticles;
 
   @override
