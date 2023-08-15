@@ -1,16 +1,32 @@
-# news_app
+# News App
 
-A new Flutter project.
+A mobile news app built with Flutter, providing users with the latest news articles from various categories. Users can bookmark articles for later reading and toggle between light and dark modes.
+
+<div align="center">
+  <img src="https://github.com/bilalamjad0x01/news-app/assets/66705229/bf9a2ce2-e45a-494f-a95c-6bc2725fc3e7" alt="NewsApp Title Graphic" width="60%">
+</div>
+
+## Features
+
+- Browse the latest news articles.
+- Bookmark articles for later reading.
+- Toggle between light and dark mode.
+- Access articles from specific categories (e.g., technology).
+- Search for articles by keywords.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+To run this project, you'll need to have Flutter installed on your machine.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/bilalamjad0x01/news-app.git
+
+## 🤵 Author
+**bilalamjad0x01**
+
