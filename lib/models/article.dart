@@ -9,16 +9,19 @@ class Article with ChangeNotifier {
   String? publishedAt;
   String? content;
   bool? isBookmark = false;
+  VoidCallback? onBookmarkChanged;
 
-  Article(
-      {this.author,
-      this.title,
-      this.description,
-      this.url,
-      this.urlToImage,
-      this.publishedAt,
-      this.content,
-      this.isBookmark});
+  Article({
+    this.author,
+    this.title,
+    this.description,
+    this.url,
+    this.urlToImage,
+    this.publishedAt,
+    this.content,
+    this.isBookmark,
+    this.onBookmarkChanged,
+  });
 
   Article.fromJson(Map<String, dynamic> json) {
     author = json['author'];
@@ -41,5 +44,11 @@ class Article with ChangeNotifier {
     data['publishedAt'] = publishedAt;
     data['content'] = content;
     return data;
+  }
+
+  void toggleBookmarkStatus() {
+    this.isBookmark = !this.isBookmark!;
+    onBookmarkChanged!();
+    notifyListeners();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/article.dart';
 import 'package:news_app/screens/article_details_screen/article_details_screen.dart';
-import 'package:news_app/screens/home_screen/widgets/tile_actions.dart';
+import 'package:news_app/screens/home_screen/widgets/tile_actions_row.dart';
 import 'package:news_app/theme/app_colors.dart';
 import 'package:news_app/theme/app_spaces.dart';
 
@@ -64,7 +64,7 @@ class HeaderNewsCard extends StatelessWidget {
                   ),
                 ),
                 AppSpaces.vertSpace1,
-                TileActions(
+                TileActionsRow(
                   currentArticle: currentArticle,
                   iconsSize: 34,
                   contentColor: AppColors.subtleColor2,

@@ -5,8 +5,8 @@ import 'package:news_app/theme/app_spaces.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:share_plus/share_plus.dart';
 
-class TileActions extends StatefulWidget {
-  const TileActions({
+class TileActionsRow extends StatefulWidget {
+  const TileActionsRow({
     super.key,
     required this.currentArticle,
     required this.iconsSize,
@@ -18,10 +18,10 @@ class TileActions extends StatefulWidget {
   final Color contentColor;
 
   @override
-  State<TileActions> createState() => _TileActionsState();
+  State<TileActionsRow> createState() => _TileActionsRowState();
 }
 
-class _TileActionsState extends State<TileActions> {
+class _TileActionsRowState extends State<TileActionsRow> {
   @override
   Widget build(BuildContext context) {
     debugPrint(widget.currentArticle.publishedAt!);
@@ -32,8 +32,7 @@ class _TileActionsState extends State<TileActions> {
         InkWell(
           onTap: () {
             setState(() {
-              widget.currentArticle.isBookmark =
-                  !widget.currentArticle.isBookmark!;
+              widget.currentArticle.toggleBookmarkStatus();
             });
           },
           child: Icon(

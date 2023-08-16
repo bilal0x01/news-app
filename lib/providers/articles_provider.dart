@@ -9,6 +9,7 @@ class ArticlesProvider with ChangeNotifier {
 
   List<Article>? get bookmarkedArticles {
     List<Article> allBookmarkedArticles = [];
+
     if (_articles != null) {
       allBookmarkedArticles
           .addAll(_articles!.where((article) => article.isBookmark == true));
@@ -17,11 +18,17 @@ class ArticlesProvider with ChangeNotifier {
       allBookmarkedArticles.addAll(
           _techArticles!.where((article) => article.isBookmark == true));
     }
+
     return allBookmarkedArticles;
   }
 
   fetchArticles() async {
     _articles = await ArticlesDataProvider.fetchArticles();
+    for (var article in _articles!) {
+      article.onBookmarkChanged = () {
+        notifyListeners();
+      };
+    }
     notifyListeners();
   }
 
@@ -31,6 +38,11 @@ class ArticlesProvider with ChangeNotifier {
 
   fetchTechArticles() async {
     _techArticles = await ArticlesDataProvider.fetchTechArticles();
+    for (var article in _techArticles!) {
+      article.onBookmarkChanged = () {
+        notifyListeners();
+      };
+    }
     notifyListeners();
   }
 }

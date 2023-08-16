@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/constants/constants.dart';
 import 'package:news_app/models/article.dart';
-import 'package:news_app/screens/home_screen/widgets/tile_actions.dart';
+import 'package:news_app/screens/home_screen/widgets/tile_actions_row.dart';
 import 'package:news_app/theme/app_colors.dart';
 import 'package:news_app/theme/app_spaces.dart';
 
@@ -34,7 +35,7 @@ class ArticleTile extends StatelessWidget {
                         overflow: TextOverflow.fade,
                       ),
                 AppSpaces.vertSpace1,
-                TileActions(
+                TileActionsRow(
                   currentArticle: currentArticle,
                   iconsSize: 26,
                   contentColor: AppColors.subtleColor,
@@ -47,7 +48,7 @@ class ArticleTile extends StatelessWidget {
             width: 120,
             height: 100,
             child: currentArticle.urlToImage == null
-                ? Image.asset('assets/images/placeholderImage.png')
+                ? Image.asset(ConstantAssets.placeholderImg)
                 : Image.network(
                     currentArticle.urlToImage!,
                     fit: BoxFit.cover,
