@@ -5,7 +5,7 @@ A mobile news app built with Flutter, providing users with the latest news artic
 <div align="center">
   <img src="https://github.com/bilalamjad0x01/news-app/assets/66705229/bf9a2ce2-e45a-494f-a95c-6bc2725fc3e7" alt="NewsApp Title Graphic" width="60%">
 </div>
-``
+
 ## Features
 
 - Browse the latest news articles.
