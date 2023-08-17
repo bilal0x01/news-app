@@ -24,8 +24,6 @@ class TileActionsRow extends StatefulWidget {
 class _TileActionsRowState extends State<TileActionsRow> {
   @override
   Widget build(BuildContext context) {
-    debugPrint(widget.currentArticle.publishedAt!);
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -36,7 +34,7 @@ class _TileActionsRowState extends State<TileActionsRow> {
             });
           },
           child: Icon(
-            widget.currentArticle.isBookmark!
+            widget.currentArticle.isBookmark
                 ? Icons.bookmark
                 : Icons.bookmark_border_rounded,
             size: widget.iconsSize,
@@ -46,7 +44,7 @@ class _TileActionsRowState extends State<TileActionsRow> {
         AppSpaces.horzSpace1,
         InkWell(
           onTap: () {
-            Share.share(widget.currentArticle.url!);
+            Share.share(widget.currentArticle.url);
           },
           child: FaIcon(
             Icons.file_upload_outlined,
@@ -56,7 +54,7 @@ class _TileActionsRowState extends State<TileActionsRow> {
         ),
         AppSpaces.horzSpace1,
         Text(
-          timeago.format(DateTime.parse(widget.currentArticle.publishedAt!)),
+          timeago.format(DateTime.parse(widget.currentArticle.publishedAt)),
           style: TextStyle(
             color: widget.contentColor,
           ),

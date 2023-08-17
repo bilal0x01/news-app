@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 
 class Article with ChangeNotifier {
-  String? author;
-  String? title;
-  String? description;
-  String? url;
-  String? urlToImage;
-  String? publishedAt;
-  String? content;
-  bool? isBookmark = false;
-  VoidCallback? onBookmarkChanged;
+  late final String title;
+  late final String url;
+  late final String publishedAt;
+
+  late final String? author;
+  late final String? description;
+  late final String? urlToImage;
+  late final String? content;
+  bool isBookmark = false;
+  late final VoidCallback? onBookmarkChanged;
 
   Article({
-    this.author,
-    this.title,
-    this.description,
-    this.url,
-    this.urlToImage,
-    this.publishedAt,
-    this.content,
-    this.isBookmark,
+    required this.title,
+    required this.url,
+    required this.publishedAt,
+    required this.author,
+    required this.description,
+    required this.urlToImage,
+    required this.content,
+    required this.isBookmark,
     this.onBookmarkChanged,
   });
 
@@ -47,7 +48,7 @@ class Article with ChangeNotifier {
   }
 
   void toggleBookmarkStatus() {
-    this.isBookmark = !this.isBookmark!;
+    isBookmark = !isBookmark;
     onBookmarkChanged!();
     notifyListeners();
   }

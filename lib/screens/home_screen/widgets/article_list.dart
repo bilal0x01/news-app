@@ -29,7 +29,7 @@ class ArticleList extends StatelessWidget {
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) =>
-                      ArticleDetailsScreen(url: currentArticle.url!),
+                      ArticleDetailsScreen(url: currentArticle.url),
                 ),
               ),
               child: Column(

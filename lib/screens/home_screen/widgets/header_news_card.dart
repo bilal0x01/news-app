@@ -4,6 +4,7 @@ import 'package:news_app/screens/article_details_screen/article_details_screen.d
 import 'package:news_app/screens/home_screen/widgets/tile_actions_row.dart';
 import 'package:news_app/theme/app_colors.dart';
 import 'package:news_app/theme/app_spaces.dart';
+import 'package:news_app/widgets/design/app_cache_network_image.dart';
 
 class HeaderNewsCard extends StatelessWidget {
   const HeaderNewsCard({super.key, required this.currentArticle});
@@ -16,18 +17,15 @@ class HeaderNewsCard extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => ArticleDetailsScreen(url: currentArticle.url!),
+          builder: (context) => ArticleDetailsScreen(url: currentArticle.url),
         ),
       ),
       child: Material(
         elevation: isDarkMode ? 0 : 20,
         child: Stack(children: [
           Positioned.fill(
-            child: Image.network(
-              currentArticle.urlToImage!,
-              fit: BoxFit.cover,
-            ),
-          ),
+              child:
+                  AppCacheNetworkImage(imageUrl: currentArticle.urlToImage!)),
           Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
@@ -52,7 +50,7 @@ class HeaderNewsCard extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.sizeOf(context).width / 1.3,
                   child: Text(
-                    currentArticle.title!,
+                    currentArticle.title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24,

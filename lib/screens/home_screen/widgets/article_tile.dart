@@ -4,6 +4,7 @@ import 'package:news_app/models/article.dart';
 import 'package:news_app/screens/home_screen/widgets/tile_actions_row.dart';
 import 'package:news_app/theme/app_colors.dart';
 import 'package:news_app/theme/app_spaces.dart';
+import 'package:news_app/widgets/design/app_cache_network_image.dart';
 
 class ArticleTile extends StatelessWidget {
   const ArticleTile({
@@ -22,18 +23,16 @@ class ArticleTile extends StatelessWidget {
           Expanded(
             child: Column(
               children: [
-                currentArticle.title == null
-                    ? const Text('')
-                    : Text(
-                        currentArticle.title!,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                        maxLines: 3,
-                        softWrap: true,
-                        overflow: TextOverflow.fade,
-                      ),
+                Text(
+                  currentArticle.title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                  maxLines: 3,
+                  softWrap: true,
+                  overflow: TextOverflow.fade,
+                ),
                 AppSpaces.vertSpace1,
                 TileActionsRow(
                   currentArticle: currentArticle,
@@ -49,24 +48,7 @@ class ArticleTile extends StatelessWidget {
             height: 100,
             child: currentArticle.urlToImage == null
                 ? Image.asset(ConstantAssets.placeholderImg)
-                : Image.network(
-                    currentArticle.urlToImage!,
-                    fit: BoxFit.cover,
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) {
-                        return child;
-                      }
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
-                              : null,
-                        ),
-                      );
-                    },
-                  ),
+                : AppCacheNetworkImage(imageUrl: currentArticle.urlToImage!),
           ),
         ],
       ),

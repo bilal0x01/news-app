@@ -7,21 +7,6 @@ class ArticlesProvider with ChangeNotifier {
 
   List<Article>? get articles => _articles;
 
-  List<Article>? get bookmarkedArticles {
-    List<Article> allBookmarkedArticles = [];
-
-    if (_articles != null) {
-      allBookmarkedArticles
-          .addAll(_articles!.where((article) => article.isBookmark == true));
-    }
-    if (_techArticles != null) {
-      allBookmarkedArticles.addAll(
-          _techArticles!.where((article) => article.isBookmark == true));
-    }
-
-    return allBookmarkedArticles;
-  }
-
   fetchArticles() async {
     _articles = await ArticlesDataProvider.fetchArticles();
     for (var article in _articles!) {
@@ -44,5 +29,20 @@ class ArticlesProvider with ChangeNotifier {
       };
     }
     notifyListeners();
+  }
+
+  List<Article>? get bookmarkedArticles {
+    List<Article> allBookmarkedArticles = [];
+
+    if (_articles != null) {
+      allBookmarkedArticles
+          .addAll(_articles!.where((article) => article.isBookmark == true));
+    }
+    if (_techArticles != null) {
+      allBookmarkedArticles.addAll(
+          _techArticles!.where((article) => article.isBookmark == true));
+    }
+
+    return allBookmarkedArticles;
   }
 }
